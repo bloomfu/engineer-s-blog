@@ -1,3 +1,20 @@
+# nextBlogApp
+
+## About
+
+This app is an engineer's blog app
+
+## Usage Technology
+
+- Next.js
+- tailwindCSS
+- Atomic Design
+- Storybook
+
+## Comment
+
+I created an app with Next.js using atomic design. I used Storybook to create a button component and used it as Atoms. Css used tailwind css. I had a lot of trouble setting up Storybook's tailwindcss, but I was able to learn it. I also tried the SSG challenge. Without knowing that the getStaticProps function can only be used under the pages directory, I was very worried about writing under a component and getting an error. As for SSG, there were many other errors, and I learned a lot, and I think I can make good use of it in the next opportunity. I would like to conclude by praying that you will be able to make the most of the next.js application development and use it in your work. Until the end Thank you for reading.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
