@@ -1,13 +1,22 @@
-import Button from "./Button";
+import { useMemo } from 'react'
+import Button from './Button'
 
 export default {
-  title: "My Button",
-};
+  title: 'My Button',
+}
 
-const Template = (args) => <Button {...args} />;
+interface ButtonProps {
+  title: string
+}
 
-export const ButtonCustom = Template.bind({});
+const useButtonCustom = (args: ButtonProps) => {
+  return useMemo(() => {
+    return <Button {...args} />
+  }, [args])
+}
 
-ButtonCustom.args = {
-  title: "ホームへ戻る",
-};
+export const ButtonCustom = () => {
+  const args = { title: 'ホームへ戻る' }
+  const button = useButtonCustom(args)
+  return button
+}

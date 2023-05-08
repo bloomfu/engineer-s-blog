@@ -1,20 +1,20 @@
-import Layout from "../atoms/NameImage/Layout";
-import Profile from "../atoms/Profile/Profile";
-import Header from "../organisms/Header";
+import Header from '../organisms/Header'
 
-function index({ children }) {
+interface Props {
+  children: React.ReactNode
+}
+
+function index({ children }: Props) {
   return (
     <>
       <Header>
         <section>
-          <h2 className="text-2xl font-bold text-center my-4">
-            🍞engineer's Blog
-          </h2>
+          <h2 className='text-2xl font-bold text-center my-4'>🍞engineer Blog</h2>
           {children}
         </section>
       </Header>
     </>
-  );
+  )
 }
 
-export default index;
+export default index
