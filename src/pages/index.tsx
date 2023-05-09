@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getSortedPostsData } from '../lib/post'
 import Index from '../components/templates/Index'
+import { getSortedPostsData } from '../lib/post'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData() //id,title, data,thumbnail

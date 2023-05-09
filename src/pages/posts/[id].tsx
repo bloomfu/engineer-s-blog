@@ -1,8 +1,8 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
-import Layout from '@/components/atoms/NameImage/Layout'
-import Date from '@/components/atoms/Date'
-import { getAllPostIds, getPostData } from '@/lib/post'
 import Head from 'next/head'
+import Date from '@/components/atoms/Date'
+import Layout from '@/components/atoms/NameImage/Layout'
+import { getAllPostIds, getPostData } from '@/lib/post'
 
 //動的ルーティング設定のための関数。pathsがルーティング設定になっている(開発環境なら毎回リクエスト時に実行される、本番環境ならビルド時だけ実行される。)。
 //idがとりうる値のリストを返す
@@ -17,7 +17,15 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsContext) => {
-  const postData = await getPostData(params.id)
+  const postId = Array.isArray(params?.id) ? params?.id[0] : params?.id ?? ''
+
+  if (!postId) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const postData = await getPostData(postId)
 
   console.log(postData)
   return {
@@ -27,13 +35,24 @@ export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsC
   }
 }
 
+interface PostData {
+  title: string
+  date: string
+  contentHTML: string
+}
+
+interface DateProps {
+  dateString: string
+  className?: string
+}
+
 {
   /* 以下レイアウトに関し、getStaticPropsを使用しているためコンポーネントは使わず直書きしている */
 }
-function Post({ postData }) {
+function Post({ postData }: { postData: PostData }) {
   return (
     <>
-      <Layout />
+      <Layout home={false} />
       <Head>
         <title>{postData.title}</title>
       </Head>
